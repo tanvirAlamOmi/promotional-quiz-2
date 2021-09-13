@@ -452,7 +452,7 @@
               <div class="container">
                 <div class="row align-items-center">
                   <div class="col-6 text-center">
-                    <img src="{{asset('img/gift-img.JPG')}}" id="gift_img" class="img-thumbnail" alt="gift-img" style="border-radius: 277px;">
+                    <img src="" id="gift_img" class="img-thumbnail" alt="gift-img" style="border-radius: 277px;">
                   </div>
                   <div class="col-6">
                     <h1 id="gift_name"></h1>
