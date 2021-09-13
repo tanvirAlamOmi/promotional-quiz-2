@@ -134,23 +134,81 @@ body {
 /*quiz body css end*/
 
 
+/* quiz form section css start */
+
+.quiz-form {
+    padding: 0 25%;
+    text-align: center;
+}
+
+.quiz-form .mb-3 {
+    text-align: start;
+}
+
+.quiz-form .mb-3 .form-label {}
+
+.quiz-form .mb-3 .form-control {}
+
+.quiz-form .btn {
+    padding: 11px 74px;
+    background: #D95840;
+    border: none;
+}
+
+.quiz-form .btn:hover {
+    transition: .2s ease;
+    background: #038183;
+}
+
+
+/* quiz form section css end */
+
+
 /* quiz gift show page css start*/
 
 .quiz-gift {
     padding: 40px 0;
 }
 
-.quiz-gift img {
-    border: none;
-    width: 500px;
-    padding: 20px 0;
+.quiz-gift .card {
+    padding: 63px 0;
 }
 
-.quiz-gift h1 {
-    font-size: 58px;
-    padding: 20px 0;
+.quiz-gift .card .header {}
+
+.quiz-gift .card .header h1 {
+    padding-left: 60px;
+    font-size: 57px;
     text-transform: uppercase;
     color: #fecc00;
+}
+
+.quiz-gift .card .header h2 {
+    padding-left: 60px;
+    font-size: 47px;
+    text-transform: uppercase;
+    color: #fecc00;
+}
+
+.quiz-gift .card .header img {
+    width: 50%;
+}
+
+.quiz-gift .card .body-part {}
+
+.quiz-gift .card .body-part img {
+    border-radius: 10%;
+}
+
+.quiz-gift .card .body-part h1 {
+    font-size: 48px;
+    padding: 20px 0;
+    text-transform: uppercase;
+    color: #128283;
+}
+
+.quiz-gift .card .body-part p {
+    font-size: 22px;
 }
 
 .quiz-gift .btn {
@@ -169,30 +227,6 @@ body {
 
 
 /*quiz result page css start*/
-
-.quiz-result {
-    text-align: center;
-}
-
-.quiz-result .mb-3 {
-    margin: 0 290px;
-    text-align: start;
-}
-
-.quiz-result .mb-3 .form-label {}
-
-.quiz-result .mb-3 .form-control {}
-
-.quiz-result .btn {
-    padding: 11px 74px;
-    background: #D95840;
-    border: none;
-}
-
-.quiz-result .btn:hover {
-    transition: .2s ease;
-    background: #038183;
-}
 
 
 /*quiz result page end*/
@@ -227,7 +261,6 @@ body {
 
 .thank-you img {
     width: 33%;
-    padding: 60px 0;
     padding-bottom: 20px;
 }
 
@@ -268,9 +301,28 @@ body {
 
 /* mobile responsive css start */
 
-@media (max-width: 575.98px) {
+@media (min-width: 575.98px) {
+    .quiz-body .qus-headline {
+        padding: 0px 12px;
+    }
     .quiz-result .mb-3 {
         margin: 0px 6px;
+    }
+    .quiz-gift .card {
+        padding: 63px 28px;
+    }
+    .quiz-gift .card .header h1 {
+        font-size: 31px;
+        padding-left: 0px;
+    }
+    .quiz-gift .card .body-part h1 {
+        font-size: 24px;
+    }
+    .quiz-gift .btn {
+        padding: 12px 20px;
+    }
+    .quiz-gift .card .body-part p {
+        font-size: 15px;
     }
 }
 
