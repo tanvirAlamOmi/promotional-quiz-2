@@ -24,7 +24,9 @@
       <link rel="stylesheet" href="{{asset('css/style.css')}}">
 
       <style>
-
+        .congrtz-img{
+          width: 150% !important;
+        }
        </style>
   </head>
   
@@ -435,14 +437,15 @@
 
     <section class="quiz-gift">
       <div class="container">
-        <div class="card container-fluid" style="background: beige;">
+        <div class="card container-fluid" style="background: ghostwhite;">
           <div class="col-12">
             <div class="header row">
               <div class="text-left col-6">
-                <h1>Congratulations</h1>
+
+                <img src="{{asset('img\congz.png')}}" alt="" class="congrtz-img" >
               </div>
               <div class="text-right col-6" style="text-align: right;">
-                <img src="https://cdn.iconscout.com/icon/free/png-256/celebration-party-popper-tada-decoration-christmas-38099.png" alt="" 
+                <img src="{{asset('img\celebrate.webp')}}" alt="" 
                 style="margin-top: -137px;">
               </div>
             </div>
