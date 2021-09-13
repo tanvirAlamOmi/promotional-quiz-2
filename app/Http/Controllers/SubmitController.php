@@ -16,7 +16,7 @@ class SubmitController extends Controller
         $request->validate([
             'customerName' => 'required|max:255',
             'customerEmail' => 'required|email|max:255',
-            'customerPhone' => 'required|numeric|regex:/(01)[0-9]{9}/',
+            'customerPhone' => 'required|numeric',
             'prizeWon' => 'required',
         ]);
 
