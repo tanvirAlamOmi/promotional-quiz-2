@@ -73,12 +73,6 @@
 
 
                 ],
-                rowCallback: function(row, data, index){
-                    if(data["order_status"] == "Pending"){
-                        $('td', row).css('background', '#e9edf2');
-                        $('td', row).css('font-weight', '500');
-                    }
-                },
                 dom: 'Brlftip',
                 buttons: [
                     {
