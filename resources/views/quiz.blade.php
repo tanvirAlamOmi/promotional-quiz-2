@@ -421,10 +421,10 @@
       <div class="container">
         <div class="row align-items-center">
           <div class="col-6 text-center">
-            <img src="{{asset('img/gift-img.JPG')}}" class="img-thumbnail" alt="gift-img">
+            <img src="{{asset('img/gift-img.JPG')}}" id="gift_img" class="img-thumbnail" alt="gift-img">
           </div>
           <div class="col-6">
-            <h1>gift result</h1>
+            <h1 id="gift_name"></h1>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam deleniti beatae expedita dolorem ut fugiat suscipit saepe inventore deserunt modi, iste ullam porro sed natus eligendi recusandae voluptate temporibus ipsa.</p>
             <button type="button" class="btn btn-primary hide" id="coupon_button">Get your coupon now</button>
           </div>
@@ -433,7 +433,7 @@
     </section>
     <!-- quiz gift update page end-->
     <!--quiz result page start-->
-    <section class="quiz-result">
+    <section class="quiz-form">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -471,8 +471,7 @@
             <img src="{{asset('img/message.png')}}" alt="">
             <h1>Thank You, Enjoy!</h1>
             <h2>We've sent the coupon to your Email.</h2>
-            <a href="#">
-             </svg> Back Home</a>
+            <a href="#">Back Home</a>
           </div>
         </div>
       </div>
@@ -525,8 +524,9 @@
       (function () {
         $(".box").hide();
         $("#result_button").hide();
-        $('.quiz-result').hide();
+        $('.quiz-form').hide();
         $('.quiz-gift').hide();
+        $('.thank-you').hide();
         // $('.thank-you').hide();
         contentBoxShow(boxNum);
         progressBarProgress(progressWidth);
@@ -543,24 +543,48 @@
       function logic(result){
         switch(result) {
           case '1a2a3a4c5a-n':
-            return "Pesto Chicken";
+            return {
+              "name" : "Pesto Chicken",
+              "coupon_code" : "Pesto Chicken",
+              "img_source" : "pesto-gift.jpg"
+            };
 
           case '1c2c3d4b5c-n':
-            return "Tikka";
+            return {
+              "name" : "Tikka",
+              "coupon_code" : "Pesto Chicken",
+              "img_source" : "pesto-gift.jpg"
+            };
             
           case '1b2b3c4a5d-n':
-            return "Spicy Meatball";
+            return {
+              "name" : "Spicy Meatball",
+              "coupon_code" : "Pesto Chicken",
+              "img_source" : "pesto-gift.jpg"
+            };
             
           case '1d2d3b4d5b-v':
-            return "Veggie Melt";
+            return {
+              "name" : "Veggie Melt",
+              "coupon_code" : "Pesto Chicken",
+              "img_source" : "pesto-gift.jpg"
+            };
             
           default:
             switch(vegOrNonveg(result)) {
               case 'n':
-                return "Tikka flavoured sandwich";
+                return {
+              "name" : "Tikka flavoured sandwich",
+              "coupon_code" : "Pesto Chicken",
+              "img_source" : "pesto-gift.jpg"
+            };
                 
               case 'v':
-                return "Southern Roasted Veggie";
+                return  {
+              "name" : "Southern Roasted Veggie",
+              "coupon_code" : "Pesto Chicken",
+              "img_source" : "pesto-gift.jpg"
+            };
             }
         }
       }
@@ -574,6 +598,7 @@
         totalPoint += $(`input:checkbox[name=${checkboxNames[boxNum]}]:checked`).val();
         boxNum++;
         progressWidth = progressWidth + progressBarPortion;
+        progressBarProgress(progressWidth)
 
         if(boxNum < 6){
           $(".box").hide();
@@ -584,7 +609,6 @@
           return;
         }
 
-        progressBarProgress(progressWidth)
         contentBoxShow(boxNum)
       })
 
@@ -595,8 +619,9 @@
         $('.progress').hide();
         $('.quiz-gift').show();
         
-
         prize = logic(totalPoint);
+        $('#gift_name').html(prize.name);
+        $('#gift_img').attr("src", `{{asset('img/${prize.img_source}')}}`);
         console.log(prize);
 
       })
@@ -604,13 +629,13 @@
       $('#coupon_button').click( () => {
         
         $('.quiz-gift').hide();
-        $('.quiz-result').show();
+        $('.quiz-form').show();
         
       })
       
       // $('#submitForm').click( () => {
         
-      //   $('.quiz-result').hide();
+      //   $('.quiz-form').hide();
       //   $('.thank-you').show();
         
       // })
@@ -629,7 +654,9 @@
           }, 
           success: function(output) {
             if (output.result == "success") {
-              $('#message').html(`<li> ${output.message} </li>`).removeClass('alert-success').removeClass('alert-danger').addClass('alert-success')
+              $('.thank-you').show();
+              $('.quiz-form').hide();
+
             }
             else if(output.result == "failed"){
               $('#message').html(`<li> ${output.message} </li>`).removeClass('alert-success').removeClass('alert-danger').addClass('alert-danger')
