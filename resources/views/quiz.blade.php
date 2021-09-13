@@ -6,7 +6,8 @@
   <head>
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <title>Quiz</title>
+      <link href="{{asset('img/main-logo.png')}}" rel="icon">
+      <title>Delicious Quiz</title>
       <!-- google font-->
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
