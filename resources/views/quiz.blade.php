@@ -504,7 +504,7 @@
             <img src="{{asset('img/message.png')}}" alt="">
             <h1>Thank You, Enjoy!</h1>
             <h2>We've sent the coupon to your Email.</h2>
-            <a href="#">Back Home</a>
+            <a href="{{url('/')}}">Back Home</a>
           </div>
         </div>
       </div>
