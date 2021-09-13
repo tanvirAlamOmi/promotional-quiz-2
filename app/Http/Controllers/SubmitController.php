@@ -92,10 +92,7 @@ class SubmitController extends Controller
     {
             $product_count = Submit::select('reward', DB::raw('count(reward) as count'))
             ->groupBy('reward')->get();
-			return Datatables::of($product_count) 
-            ->addColumn('created_at', function ($row){
-                return $row->created_at->format('d-M-Y h:m:s');
-            })
+			return Datatables::of($product_count)
 			->make(true);
 
             return $product_count;
