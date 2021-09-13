@@ -381,7 +381,7 @@
               
               <div class="col-6">
                   <div class="card right" style="width: 18rem;">
-                    <!-- <img src="img/Cool Cucumber Juice-7.jpg" class="img-thumbnail" alt="quiz-banner-img"> -->
+                    <img src="{{asset('img\veg-sand.jpg')}}" class="img-thumbnail" alt="quiz-banner-img">
                     <div class="card-body">
                       <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="-v" id="qus_6_opt_1" name="craving">
@@ -394,7 +394,7 @@
               </div>
               <div class="col-6">
                   <div class="card" style="width: 18rem;">
-                    <!-- <img src="img/Super Greenies Juice-4.jpg" class="img-thumbnail" alt="quiz-banner-img"> -->
+                  <img src="{{asset('img\non-veg.jpg')}}" class="img-thumbnail" alt="quiz-banner-img">
                     <div class="card-body">
                       <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="-n" id="qus_6_opt_2" name="craving">
@@ -417,7 +417,7 @@
     </section>
     <!-- quiz body end -->
     <!-- change quiz gift update page start-->
-    {{-- <section class="quiz-gift">
+    <!-- {{-- <section class="quiz-gift">
       <div class="container">
         <div class="row align-items-center">
           <div class="col-6 text-center">
@@ -431,28 +431,26 @@
         </div>
       </div>
     </section> --}}
-
+ -->
 
     <section class="quiz-gift">
       <div class="container">
-        <div class="card container-fluid" style="
-        background: beige;
-    ">
+        <div class="card container-fluid" style="background: beige;">
           <div class="col-12">
             <div class="header row">
-              <div class="text-left col-6"><h1>Congratulations</h1></div>
-              <div class="text-right col-6" style="
-              text-align: right;">
+              <div class="text-left col-6">
+                <h1>Congratulations</h1>
+              </div>
+              <div class="text-right col-6" style="text-align: right;">
                 <img src="https://cdn.iconscout.com/icon/free/png-256/celebration-party-popper-tada-decoration-christmas-38099.png" alt="" 
                 style="margin-top: -137px;">
               </div>
             </div>
             <div class="body-part">
-              
               <div class="container">
                 <div class="row align-items-center">
                   <div class="col-6 text-center">
-                    <img src="{{asset('img/gift-img.JPG')}}" id="gift_img" class="img-thumbnail" alt="gift-img" style="border-radius: 277px;">
+                    <img src="{{asset('img/gift-img.JPG')}}" id="gift_img" class="img-thumbnail" alt="gift-img">
                   </div>
                   <div class="col-6">
                     <h1 id="gift_name"></h1>
