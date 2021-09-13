@@ -7,11 +7,18 @@
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <title>Quiz</title>
+      <!-- google font-->
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Pattaya&family=Poppins:wght@300;500;600;700&display=swap" rel="stylesheet">
       <!-- Font awesome css file -->
-      <link rel="stylesheet" href="css/all.min.css">
-      <link rel="stylesheet" href="css/fontawesome.min.css">
-      <!-- Boostrap css -->
+      <link rel="stylesheet" href="{{asset('/css/all.min.css')}}">
+      
+      <link rel="stylesheet" href="{{asset('/css/fontawesome.min.css')}}">
+      <!-- Boostrap css-->
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+      <!-- <link rel="stylesheet" href="/resources/css/bootstrap.css">
+      <link rel="stylesheet" href="/resources/css/bootstrap.min.css"> -->
       <!-- Main css -->
       <link rel="stylesheet" href="{{asset('css/style.css')}}">
 
@@ -19,17 +26,24 @@
 
        </style>
   </head>
-  <body>
-    <!-- Quiz section start -->
-   <section class="quiz-headline">
+  
+  <body onload="myFunction()">
+    <!--pre loader start-->
+    <div id="loader" class="pre-loader">
+        <img src="{{asset('img/preloader.gif')}}">
+      </div>
+    <!-- pre loader end-->
+    <!-- change Quiz section start -->
+    <section class="quiz-headline" id="myDiv">
        <div class="container">
            <div class="row">
                <div class="col-12">
-                   <h1>This is your heading</h1>
+                 <img src="{{asset('img/main-logo.png')}}" class="img-fluid" alt="main-logo">
+                   <h1>Delicious Ultimate Quiz </h1>
                </div>
            </div>
        </div>
-   </section>
+    </section>
     <!-- Quiz section end -->
     <!-- quiz body start -->
     <section class="quiz-body">
@@ -239,7 +253,8 @@
                     
                     <div class="col-6">
                        <div class="card right" style="width: 18rem;">
-                          <img src="{{asset("img/Don't cut.jpeg")}}" class="img-thumbnail" alt="quiz-banner-img">
+                       <!-- change-->
+                          <img src="{{asset("img/Don_tcut.jpeg")}}" class="img-thumbnail" alt="quiz-banner-img">
                           <div class="card-body">
                             <div class="form-check">
                               <input class="form-check-input" type="checkbox" value="4a" id="qus_4_opt_1" name="Sandwich">
@@ -400,6 +415,22 @@
         </div>
     </section>
     <!-- quiz body end -->
+    <!-- change quiz gift update page start-->
+    <section class="quiz-gift">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-6 text-center">
+            <img src="{{asset('img/gift-img.JPG')}}" class="img-thumbnail" alt="gift-img">
+          </div>
+          <div class="col-6">
+            <h1>gift result</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam deleniti beatae expedita dolorem ut fugiat suscipit saepe inventore deserunt modi, iste ullam porro sed natus eligendi recusandae voluptate temporibus ipsa.</p>
+            <button type="button" class="btn btn-primary hide" id="coupon_button">Get your coupon now</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- quiz gift update page end-->
     <!--quiz result page start-->
     <section class="quiz-result">
         <div class="container">
@@ -431,13 +462,55 @@
         </div>
     </section>
     <!--quiz result page end-->
+    <!-- Thank you page start -->
+    <section class="thank-you text-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <img src="{{asset('img/message.png')}}" alt="">
+            <h1>Thank You, Enjoy!</h1>
+            <h2>We've sent the coupon to your Email.</h2>
+            <a href="#">
+             </svg> Back Home</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Thank you page end -->
+    <!--change footer start-->
+    <section class="quiz-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <h1>Copyright <script>document.write(new Date().getFullYear())</script> © Delicious</h1>
+            <H2>Developed by <a href="https://arbreesolutions.com/" target="_blank">Arbree Solutions</a> </H2>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- footer end-->
+    <!-- preloader js start-->
+    <script>
+    var myVar;
 
+    function myFunction() {
+      myVar = setTimeout(showPage, 2000);
+    }
 
+    function showPage() {
+      document.getElementById("loader").style.display = "none";
+
+    }
+    </script>
+    <!-- preloader js end-->
     <!-- Boostrap cdn -->
+    <!-- <script src="/resources/js/bootstrap.js"></script>
+    <script src="/resources/js/bootstrap.bundle.min.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
-    <script src="./js/all.min.js"></script>
-    <script src="./js/fontawesome.min.js"></script>
+    <!-- <script src="/resources/js/bootstrap.bundle.min.js"></script> -->
+    <script src="/resources//js/all.min.js"></script>
+    <script src="/resources/js/fontawesome.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
     <script>
@@ -452,7 +525,8 @@
         $(".box").hide();
         $("#result_button").hide();
         $('.quiz-result').hide();
-        
+        $('.quiz-gift').hide();
+        // $('.thank-you').hide();
         contentBoxShow(boxNum);
         progressBarProgress(progressWidth);
       }());
@@ -516,12 +590,29 @@
       $('#result_button').click( () => {
         $(".box").hide();
         $("#result_button").hide();
+        // $("#result_button").hide();
         $('.progress').hide();
-        $('.quiz-result').show();
+        $('.quiz-gift').show();
+        
 
         prize = logic(totalPoint);
         console.log(prize);
+
       })
+
+      $('#coupon_button').click( () => {
+        
+        $('.quiz-gift').hide();
+        $('.quiz-result').show();
+        
+      })
+      
+      // $('#submitForm').click( () => {
+        
+      //   $('.quiz-result').hide();
+      //   $('.thank-you').show();
+        
+      // })
 
       $('#submitForm').submit( (event) => {
         event.preventDefault();
