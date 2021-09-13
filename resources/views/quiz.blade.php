@@ -417,7 +417,7 @@
     </section>
     <!-- quiz body end -->
     <!-- change quiz gift update page start-->
-    <section class="quiz-gift">
+    {{-- <section class="quiz-gift">
       <div class="container">
         <div class="row align-items-center">
           <div class="col-6 text-center">
@@ -427,6 +427,41 @@
             <h1 id="gift_name"></h1>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam deleniti beatae expedita dolorem ut fugiat suscipit saepe inventore deserunt modi, iste ullam porro sed natus eligendi recusandae voluptate temporibus ipsa.</p>
             <button type="button" class="btn btn-primary hide" id="coupon_button">Get your coupon now</button>
+          </div>
+        </div>
+      </div>
+    </section> --}}
+
+
+    <section class="quiz-gift">
+      <div class="container">
+        <div class="card container-fluid" style="
+        background: beige;
+    ">
+          <div class="col-12">
+            <div class="header row">
+              <div class="text-left col-6"><h1>Congratulations</h1></div>
+              <div class="text-right col-6" style="
+              text-align: right;">
+                <img src="https://cdn.iconscout.com/icon/free/png-256/celebration-party-popper-tada-decoration-christmas-38099.png" alt="" 
+                style="margin-top: -137px;">
+              </div>
+            </div>
+            <div class="body-part">
+              
+              <div class="container">
+                <div class="row align-items-center">
+                  <div class="col-6 text-center">
+                    <img src="{{asset('img/gift-img.JPG')}}" id="gift_img" class="img-thumbnail" alt="gift-img" style="border-radius: 277px;">
+                  </div>
+                  <div class="col-6">
+                    <h1 id="gift_name"></h1>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam deleniti beatae expedita dolorem ut fugiat suscipit saepe inventore deserunt modi, iste ullam porro sed natus eligendi recusandae voluptate temporibus ipsa.</p>
+                    <button type="button" class="btn btn-primary hide" id="coupon_button">Get your coupon now</button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -545,28 +580,28 @@
             return {
               "name" : "Pesto Chicken",
               "coupon_code" : "Pesto Chicken",
-              "img_source" : "pesto-gift.jpg"
+              "img_source" : "pesto_chicken_sandwich.png"
             };
 
           case '1c2c3d4b5c-n':
             return {
               "name" : "Tikka",
               "coupon_code" : "Pesto Chicken",
-              "img_source" : "pesto-gift.jpg"
+              "img_source" : "Tikka_flavoured_sandwich.png"
             };
             
           case '1b2b3c4a5d-n':
             return {
               "name" : "Spicy Meatball",
               "coupon_code" : "Pesto Chicken",
-              "img_source" : "pesto-gift.jpg"
+              "img_source" : "Spicy_Meatball_sandwich.png"
             };
             
           case '1d2d3b4d5b-v':
             return {
               "name" : "Veggie Melt",
               "coupon_code" : "Pesto Chicken",
-              "img_source" : "pesto-gift.jpg"
+              "img_source" : "Veggie_Melt_sandwich.png"
             };
             
           default:
@@ -575,14 +610,14 @@
                 return {
               "name" : "Tikka flavoured sandwich",
               "coupon_code" : "Pesto Chicken",
-              "img_source" : "pesto-gift.jpg"
+              "img_source" : "Tikka_sandwich.png"
             };
                 
               case 'v':
                 return  {
               "name" : "Southern Roasted Veggie",
               "coupon_code" : "Pesto Chicken",
-              "img_source" : "pesto-gift.jpg"
+              "img_source" : "Southern_Roasted_Veggie_sandwich.png"
             };
             }
         }
@@ -620,9 +655,7 @@
         
         prize = logic(totalPoint);
         $('#gift_name').html(prize.name);
-        $('#gift_img').attr("src", `{{asset('img/${prize.img_source}')}}`);
-        console.log(prize);
-
+        $('#gift_img').attr("src", `{{asset('img/prize/${prize.img_source}')}}`);
       })
 
       $('#coupon_button').click( () => {
@@ -631,13 +664,6 @@
         $('.quiz-form').show();
         
       })
-      
-      // $('#submitForm').click( () => {
-        
-      //   $('.quiz-form').hide();
-      //   $('.thank-you').show();
-        
-      // })
 
       $('#submitForm').submit( (event) => {
         event.preventDefault();
@@ -649,7 +675,8 @@
           "customerName": $('#customerName').val(),
           "customerEmail": $('#customerEmail').val(),
           "customerPhone": $('#customerPhone').val(),
-          "prizeWon": prize
+          "prizeWon": prize.name,
+          "coupon_code": prize.coupon_code
           }, 
           success: function(output) {
             if (output.result == "success") {
