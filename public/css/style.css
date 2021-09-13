@@ -1,55 +1,277 @@
 /*Global css start*/
-.right{
-	float: right;
+
+body {
+    font-family: 'Pattaya', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
+
+.right {
+    float: right;
+}
+
+
 /*global css end*/
-.quiz-headline{
-}
-.quiz-headline h1{
+
+.quiz-headline {
+    padding-top: 9px;
     text-align: center;
 }
+
+.quiz-headline img {
+    width: 13%;
+    border: none;
+}
+
+.quiz-headline h1 {
+    text-align: center;
+    font-size: 32px;
+    color: #D95840;
+}
+
+.alert-danger {
+    list-style: none;
+    text-align: left;
+    margin: 0 280px;
+    border-radius: 4px;
+    padding: 10px;
+}
+
+
+/* Preloader css start */
+
+#loader {
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    z-index: 1;
+    background: #fff;
+    text-align: center;
+}
+
+.pre-loader img {
+    margin-top: 16%;
+}
+
+
+/* preloader css end */
+
+
 /*quiz body css start*/
-.quiz-body{}
-.quiz-body .progress{margin: 20px 351px;}
-.quiz-body .progress .progress-bar{}
-.quiz-body .qus-headline{
-    text-align: center;
+
+.quiz-body {}
+
+.quiz-body .progress {
+    margin: 20px 351px;
 }
-.quiz-body .qus-headline img{
+
+.quiz-body .progress .progress-bar {}
+
+.progress-bar {
+    background-color: #FECA05;
+}
+
+.quiz-body .qus-headline {
+    text-align: center;
+    padding: 0px 212px;
+}
+
+.quiz-body .qus-headline img {
     width: 48%;
     border: none;
     padding: 10px 0;
 }
-.quiz-body .qus-headline h1{
+
+.quiz-body .qus-headline h1 {
     padding: 10px 0;
+    color: #038183;
 }
+
+
 /*quiz checkbox section css start*/
-.quiz-body .card{margin: 10px 0;box-shadow: 2px 1px 1px #0000001a;}
-.quiz-body .card img{
+
+.quiz-body .card {
+    margin: 10px 0;
+    box-shadow: 2px 1px 1px #0000001a;
+}
+
+.quiz-body .card:hover {
+    box-shadow: 9px 7px 7px 0px #18171721;
+    transition: .2s ease;
+}
+
+.quiz-body .card img {
     border: none;
     height: 200px;
+    transition: transform .5s ease;
 }
-.quiz-body .card .card-body{
+
+.quiz-body .card .card-body {}
+
+.quiz-body .card .card-body .form-check {}
+
+.quiz-body .card .card-body .form-check .form-check-input {}
+
+.quiz-body .card .card-body .form-check .form-check-label {
+    font-size: 18px;
 }
-.quiz-body .card .card-body .form-check{}
-.quiz-body .card .card-body .form-check .form-check-input{}
-.quiz-body .card .card-body .form-check .form-check-label{}
-.quiz-body .btn{
+
+.quiz-body .btn {
     margin: 20px 0;
+    padding: 12px 37px;
+    background: #D95840;
+    border: none;
 }
+
+.quiz-body .btn:hover {
+    transition: .2s ease;
+    background: #038183;
+}
+
+
 /*quiz checkbox section css start*/
+
+
 /*quiz body css end*/
+
+
+/* quiz gift show page css start*/
+
+.quiz-gift {
+    padding: 40px 0;
+}
+
+.quiz-gift img {
+    border: none;
+    width: 500px;
+    padding: 20px 0;
+}
+
+.quiz-gift h1 {
+    font-size: 58px;
+    padding: 20px 0;
+    text-transform: uppercase;
+    color: #fecc00;
+}
+
+.quiz-gift .btn {
+    padding: 12px 37px;
+    background: #D95840;
+    border: none;
+}
+
+.quiz-gift .btn:hover {
+    transition: .2s ease;
+    background: #038183;
+}
+
+
+/* quiz gift show page css end*/
+
+
 /*quiz result page css start*/
-.quiz-result{
+
+.quiz-result {
     text-align: center;
 }
-.quiz-result .mb-3{
+
+.quiz-result .mb-3 {
     margin: 0 290px;
     text-align: start;
 }
-.quiz-result .mb-3 .form-label{}
-.quiz-result .mb-3 .form-control{}
-.quiz-result .btn{
+
+.quiz-result .mb-3 .form-label {}
+
+.quiz-result .mb-3 .form-control {}
+
+.quiz-result .btn {
+    padding: 11px 74px;
+    background: #D95840;
+    border: none;
 }
 
+.quiz-result .btn:hover {
+    transition: .2s ease;
+    background: #038183;
+}
+
+
 /*quiz result page end*/
+
+
+/* footer css start */
+
+.quiz-footer {
+    text-align: center;
+    padding-top: 67px;
+    padding-bottom: 20px;
+}
+
+.quiz-footer h1 {
+    font-size: 16px;
+}
+
+.quiz-footer h2 {
+    font-size: 18px;
+}
+
+.quiz-footer h2 a {
+    color: #D95840;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+
+/* thank you page css start */
+
+.thank-you {}
+
+.thank-you img {
+    width: 33%;
+    padding: 60px 0;
+    padding-bottom: 20px;
+}
+
+.thank-you h1 {
+    font-family: 'Pattaya';
+    font-size: 76px;
+    color: #038183;
+}
+
+.thank-you h2 {
+    font-family: 'Poppins';
+    color: #000000;
+    padding-bottom: 56px;
+}
+
+.thank-you a {
+    padding: 11px 74px;
+    background: #D95840;
+    border: none;
+    text-decoration: none;
+    color: #fff;
+}
+
+.thank-you a:hover {
+    transition: .2s ease;
+    background: #038183;
+}
+
+.thank-you a svg {}
+
+
+/* thank you page css end */
+
+
+/* footer css end */
+
+
+/* mobile responsive css start */
+
+@media (max-width: 575.98px) {
+    .quiz-result .mb-3 {
+        margin: 0px 6px;
+    }
+}
+
+
+/* mobile responsive css end */
