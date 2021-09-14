@@ -42,7 +42,7 @@
            <div class="row">
                <div class="col-12">
                  <img src="{{asset('img/main-logo.png')}}" class="img-fluid" alt="main-logo">
-                   <h1>Delicious Ultimate Quiz </h1>
+                   <h1>Delicious Ultimate Quiz This is for test</h1>
                </div>
            </div>
        </div>
