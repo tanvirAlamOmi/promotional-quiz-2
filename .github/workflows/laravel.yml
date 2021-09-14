@@ -9,31 +9,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       # Here is the deployment action
-      - name: Upload from public_html via FTP
-        uses: airvzxf/ftp-deployment-action@latest
+      #       - name: Upload from public_html via FTP
+      #         uses: airvzxf/ftp-deployment-action@latest
+      - name: 📂 Sync files
+        uses: SamKirkland/FTP-Deploy-Action@4.1.0
         with:
           server: ${{ secrets.FTP_SERVER }}
           user: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local_dir: "./"
           remote_dir: "/home3/arbrefos/quiz.arbreefos.com"
-          delete: "false"
-          
-          
-          
-#   web-deploy:
-#     name: 🎉 Deploy
-#     runs-on: ubuntu-latest
-#     steps:
-#     - name: 🚚 Get latest code
-#       uses: actions/checkout@v2
-#     - name: 📂 Sync files
-#       uses: SamKirkland/FTP-Deploy-Action@4.0.0
-#       with:
-#           server: ${{ secrets.FTP_SERVER }}
-#           username: ${{ secrets.FTP_USERNAME }}
-#           password: ${{ secrets.FTP_PASSWORD }}
-#           protocol: ftps
-#           port:  21
-#           local-dir: "./"
-#           server-dir: "./quiz.arbreefos.com/"
