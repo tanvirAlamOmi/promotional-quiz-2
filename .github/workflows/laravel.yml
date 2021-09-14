@@ -4,25 +4,6 @@ on:
 name: 🚀 Deploy website on push
 
 jobs:
-  deploy_job:
-    runs-on: ubuntu-latest
-    name: build&deploy
-    steps:
-      # To use this repository's private action, you must check out the repository
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: deploy file to server
-        uses: wlixcc/SFTP-Deploy-Action@v1.2.1
-        with:
-          username: '${{ secrets.FTP_USERNAME }}'
-          server: '${{ secrets.FTP_SERVER }}'
-          ssh_private_key: ${{ secrets.SFTP_ACCESS_TOKEN }}
-          local_path: './'
-          remote_path: '/home3/arbrefos/quiz.arbreefos.com'
-          args: '-o ConnectTimeout=5'
-          
-
   web-deploy:
     name: 🎉 Deploy
     runs-on: ubuntu-latest
