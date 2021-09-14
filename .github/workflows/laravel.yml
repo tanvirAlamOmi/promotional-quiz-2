@@ -18,4 +18,4 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: "./"
-          server-dir: "/home3/arbrefos/quiz.arbreefos.com/"
+          server-dir: "./quiz.arbreefos.com/"
