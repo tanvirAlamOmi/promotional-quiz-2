@@ -11,30 +11,116 @@ use Mail;
 
 class SubmitController extends Controller
 {
-    
-    public function onSubmit(Request $request ){
+
+    public function validationChcekForCustomer(Request $request)
+    {
         $request->validate([
-            'customerName' => 'required|max:255',
-            'customerEmail' => 'required|email|max:255',
+            'customerName' => 'required|max:50|min:3',
+            'customerEmail' => 'required|email:rfc,dns|max:255',
+            'customerPhone' => 'required|numeric|digits:10',
+        ]);
+        
+        try{
+            $delayDays = 30;
+            $newDateTime = Carbon::now()->subDays($delayDays);
+            // START check if already took the code in given period of time 
+
+            $result = Submit::where('created_at', ">", $newDateTime)
+            ->where(function ($query) use ( $request) {
+                $query->where('email', $request->customerEmail)
+                ->orWhere('phone', $request->customerPhone);
+            })
+            ->first();
+
+            // if($result){
+            //     $remainintTime = $result->created_at->diff($newDateTime)->format('%D day(s) %H:%i:%s');
+            //     return response()->json(array("result" => "failed", "message" => "You can try again after $remainintTime hour(s).")); 
+            // }
+
+            return response()->json(array("result" => "success", "message" => "The User is Valid"));
+
+        }catch(Exception $e){
+        	return response()->json(array("result" => "failed", "message" => $e));
+        }
+       
+    }
+    
+    public function onSubmitDeli(Request $request ){
+
+        $request->validate([
+            'prizeWon' => 'required',
+        ]);
+
+        try{
+            // DB::transaction(function() {
+
+                // START store request
+                $submit = new Submit;
+                $submit->name = $request->customerName;
+                $submit->email = $request->customerEmail;
+                $submit->phone = $request->customerPhone;
+                $submit->reward = $request->prizeWon;
+                // $submit->coupon = $request->coupon;
+        
+                $submit->save();
+                // END store request
+
+                // START mail send 
+                $mail_to = $request->customerEmail;
+                $name = $request->customerName;
+                $mail_template = "Admin.emails.quiz-result-mail";
+                $data = [
+                    // 'restaurant_name'=> $restaurant->name,
+                    // 'restaurant_email'=> $restaurant->email,
+                    'customer'=> $request->customerName,
+                    'sandwich_name' => $request->prizeWon,
+                    'sandwich_code' => $request->coupon_code,
+                    // 'phone'=>  $request->phone,
+                    // 'email'=> $request->customerEmail,
+                    // 'comment'=> $request->comment,
+                    // 'reply'=> $request->reply,
+                ];
+                Mail::send($mail_template, $data, function($message) use ($mail_to, $name) {
+                    $message->to($mail_to, $name )->subject("You've won a free sandwich from delicious 🤯");
+                }); 
+                // END mail send
+            // });
+
+
+            return response()->json(array("result" => "success", "message" => "The Request submitted sucessfully."));
+
+        }catch(Exception $e){
+        	return response()->json(array("result" => "failed", "message" => $e));
+        }
+
+    }
+
+    
+    public function onSubmitNkd(Request $request ){
+
+        $request->validate([
+            'customerName' => 'required|max:50|min:3',
+            'customerEmail' => 'required|email:rfc,dns|max:255',
             'customerPhone' => 'required|numeric',
             'prizeWon' => 'required',
         ]);
 
         try{
-            $delayHours = 2;
-            $newDateTime = Carbon::now()->subHours($delayHours);
-
+            $delayDays = 30;
+            $newDateTime = Carbon::now()->subDays($delayDays);
             // START check if already took the code in given period of time 
 
-            $result = Submit::All()
-            ->where('created_at', ">", $newDateTime)
-            ->where('email', $request->customerEmail)
+            $result = Submit::where('created_at', ">", $newDateTime)
+            ->where(function ($query) use ( $request) {
+                $query->where('email', $request->customerEmail)
+                ->orWhere('phone', $request->customerPhone);
+            })
             ->first();
 
-            // if($result){
-            //     $remainintTime = $result->created_at->diff($newDateTime)->format('%H:%i');
-            //     return response()->json(array("result" => "failed", "message" => "You can try again after $remainintTime min.")); 
-            // }
+            if($result){
+                $remainintTime = $result->created_at->diff($newDateTime)->format('%D day(s) %H:%i:%s');
+                return response()->json(array("result" => "failed", "message" => "You can try again after $remainintTime hour(s).")); 
+            }
 
             // END check if already took the code in given period of time 
             // DB::transaction(function() {
@@ -63,7 +149,7 @@ class SubmitController extends Controller
                     // 'reply'=> $request->reply,
                 ];
                 // Mail::send($mail_template, $data, function($message) use ($mail_to, $name) {
-                //     $message->to($mail_to, $name )->subject('Resonse to your query');
+                //     $message->to($mail_to, $name )->subject("You've won a free sandwich from delicious 🤯");
                 // }); 
                 // END mail send
             // });
@@ -77,12 +163,12 @@ class SubmitController extends Controller
 
     }
     
-    public function orderListDataTable()
+    public function orderListDataTable($fromDate, $toDate)
     {
-			$data = Submit::All();
+			$data = Submit::whereBetween('created_at', [$fromDate, $toDate])->get();
 			return Datatables::of($data)
             ->addColumn('created_at', function ($row){
-                return $row->created_at->format('d-M-Y h:m:s');
+                return $row->created_at->format('d-M-Y h:i A');
             })
 			->make(true);
 			return $data;

@@ -9,14 +9,18 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <link href="img/logo/logo.png" rel="icon">
-  <title>RuangAdmin - Register</title>
+  <title>Register-Delicious</title>
   
   <link href="{{asset('Admin/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
   <link href="{{asset('Admin/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
   <link href="{{asset('Admin/css/ruang-admin.min.css')}}" rel="stylesheet">
 
 </head>
-
+<style>
+  label{
+    color: black;
+  }
+</style>
 <body class="bg-gradient-login">
   <!-- Register Content -->
   <div class="container-login">
@@ -27,6 +31,9 @@
             <div class="row">
               <div class="col-lg-12">
                 <div class="login-form">
+                  <div class="float-right" id="close_button">
+                    <i class="fas fa-times fa-sm fa-fw"></i> </a>
+                  </div>
                   <div class="text-center">
                     <h1 class="h4 text-gray-900 mb-4">Register</h1>
                   </div>
@@ -85,7 +92,11 @@
   <script src="{{asset('Admin/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
   <script src="{{asset('Admin/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
   <script src="{{asset('Admin/js/ruang-admin.min.js')}}"></script>
-  
+  <script>
+    $('#close_button').click(function() {
+            history.go(-1);
+      });
+  </script>
 </body>
 
 </html>
